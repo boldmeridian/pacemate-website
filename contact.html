@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact PaceMate Support - Get help with your energy tracking app">
     <title>Support - PaceMate</title>
     <style>
         * {
@@ -11,56 +12,83 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #F5B041;
+            --primary-dark: #E8A535;
+            --secondary: #4A9B9B;
+            --background: #0D1117;
+            --surface: #1A1F2E;
+            --surface-hover: #252D3D;
+            --text: #E8E8EC;
+            --text-secondary: #9A9AA0;
+            --border: #2A3040;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #11181C;
-            background: #ffffff;
+            color: var(--text);
+            background: var(--background);
         }
 
         nav {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #16a34a;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
 
         nav a {
+            color: var(--text);
             text-decoration: none;
-            color: #11181C;
-            margin-left: 2rem;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #16a34a;
+            color: var(--primary);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 20px;
+        }
+
+        main {
+            padding: 60px 20px;
         }
 
         h1 {
-            color: #0f766e;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            font-size: 2rem;
-            text-align: center;
+            color: var(--text);
         }
 
         .intro {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 3rem;
             font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
 
         .support-grid {
@@ -71,101 +99,113 @@
         }
 
         .support-card {
-            background: #f9fafb;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            border-left: 4px solid #16a34a;
-            text-align: center;
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .support-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(245, 176, 65, 0.15);
         }
 
         .support-card h3 {
-            color: #0f766e;
+            color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
         }
 
         .support-card p {
-            color: #6b7280;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
 
         .support-card a {
-            display: inline-block;
-            background: #16a34a;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            color: var(--primary);
             text-decoration: none;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
         }
 
         .support-card a:hover {
-            background: #15803d;
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
-        .faq {
-            background: #f3f4f6;
-            padding: 2rem;
-            border-radius: 0.75rem;
+        .response-time {
+            background: rgba(245, 176, 65, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+
+        .faq-section {
             margin-top: 3rem;
         }
 
-        .faq h2 {
-            color: #0f766e;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+        .faq-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .faq-items {
+            display: grid;
+            gap: 1rem;
         }
 
         .faq-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid #16a34a;
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
 
         .faq-item h4 {
-            color: #0f766e;
+            color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
         .faq-item p {
-            color: #6b7280;
-            font-size: 0.95rem;
-        }
-
-        .response-time {
-            background: #dbeafe;
-            border-left: 4px solid #3b82f6;
-            padding: 1rem;
-            margin: 2rem 0;
-            border-radius: 0.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
 
         footer {
-            background: #1f2937;
-            color: #d1d5db;
-            padding: 2rem;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            margin-top: 3rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
 
         footer a {
-            color: #60a5fa;
+            color: var(--primary);
             text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
-            .support-grid {
-                grid-template-columns: 1fr;
+            nav ul {
+                gap: 1rem;
             }
         }
     </style>
@@ -173,101 +213,106 @@
 <body>
     <nav>
         <div class="logo">🥄 PaceMate</div>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+        </ul>
     </nav>
 
-    <div class="container">
-        <h1>Support & Contact</h1>
-        <p class="intro">We're here to help! Whether you have questions, feedback, or need technical support, reach out to us.</p>
+    <main>
+        <div class="container">
+            <h1>Support & Contact</h1>
+            <p class="intro">We're here to help! Whether you have questions, feedback, or need technical support, reach out to us.</p>
 
-        <div class="support-grid">
-            <div class="support-card">
-                <h3>📧 Contact Support</h3>
-                <p>Have a question, need help, or want to share feedback? We'd love to hear from you. We'll get back to you within 24-48 hours.</p>
-                <a href="mailto:support@pacemate.app">support@pacemate.app</a>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>📧 Contact Support</h3>
+                    <p>Have a question, need help, or want to share feedback? We'd love to hear from you. We'll get back to you within 24-48 hours.</p>
+                    <a href="mailto:support@pacemate.app">support@pacemate.app</a>
+                </div>
             </div>
+
+            <div class="response-time">
+                <strong>📬 Response Time:</strong> We typically respond to all inquiries within 24-48 hours. For urgent issues, please mark your email as urgent.
+            </div>
+
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <h4>❓ How do I get started with PaceMate?</h4>
+                        <p>Download the app from the App Store or Google Play, then follow the onboarding flow. You'll select your chronic condition, set your daily spoon limit, and start tracking your energy right away.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Is my data private and secure?</h4>
+                        <p>Yes! PaceMate is designed with privacy as a core principle. All your data is stored locally on your device. We never collect, store, or share your personal health information with third parties.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Can I sync data across devices?</h4>
+                        <p>Currently, PaceMate stores data locally on each device. We're exploring cloud sync options for future versions. For now, you can export your data as a PDF and share it manually.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ What's the cost?</h4>
+                        <p>PaceMate is available to download. We may offer optional in-app features in the future, but the core energy tracking functionality will always be available.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ How do I report a bug?</h4>
+                        <p>If you encounter a bug or technical issue, please email us at support@pacemate.app with details about what happened. Include your device model, OS version, and steps to reproduce the issue.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Can I customize activities?</h4>
+                        <p>Absolutely! You can create custom activities with your own names, spoon costs, and icons. You can also import activity templates for your specific condition.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Does PaceMate work offline?</h4>
+                        <p>Yes! PaceMate is designed to work completely offline. All features are available without an internet connection, and your data is always stored locally.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ How can I export my data?</h4>
+                        <p>You can export your activity logs and insights as PDF reports from the Settings screen. This is great for sharing with healthcare providers or keeping personal records.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ What conditions does PaceMate support?</h4>
+                        <p>PaceMate includes templates for ME/CFS, Long COVID, POTS, Fibromyalgia, and Migraine. You can also customize the app for any chronic condition.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Is there a user guide or tutorial?</h4>
+                        <p>Yes! The app includes an onboarding tutorial and a comprehensive Crash Recovery Guide with evidence-based strategies. You can access the guide anytime from Settings.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ Can I delete my data?</h4>
+                        <p>Yes! You have full control over your data. You can delete individual entries, clear all data, or export everything before deleting. See Settings for data management options.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ How do I provide feedback?</h4>
+                        <p>We'd love to hear your feedback! Email us at support@pacemate.app with your ideas, suggestions, or feature requests. Your input helps us improve PaceMate.</p>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        <div class="response-time">
-            <strong>📬 Response Time:</strong> We typically respond to all inquiries within 24-48 hours. For urgent issues, please mark your email as urgent.
-        </div>
-
-        <div class="faq">
-            <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-                <h4>❓ What is Spoon Theory?</h4>
-                <p>Spoon Theory is a metaphor for managing limited energy resources when living with chronic illness. Each activity "costs" a certain number of spoons (energy units). PaceMate helps you track these costs to avoid running out of spoons and experiencing post-exertional malaise crashes.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Is PaceMate a medical device?</h4>
-                <p>No. PaceMate is a health tracking tool, not a medical device. It does not provide medical advice and should not replace professional medical care. Always consult with your healthcare provider about your health.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Where is my data stored?</h4>
-                <p>All your data is stored locally on your device. We never send your health information to our servers. This means your data is private and the app works offline.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ What happens if I uninstall the app?</h4>
-                <p>Your data will be permanently deleted from your device. We recommend exporting your data as a PDF report before uninstalling if you want to keep a backup.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Can I export my data?</h4>
-                <p>Yes! You can export your weekly or monthly data as a PDF report from the Settings screen. These reports are great for sharing with healthcare providers or keeping personal records.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Does PaceMate work offline?</h4>
-                <p>Yes! PaceMate is designed to work completely offline. You don't need an internet connection to track your activities, log symptoms, or view your data.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ How do I customize my activities?</h4>
-                <p>You can create custom activities in the Settings screen. Give each activity a name, icon, and spoon cost. You can also edit or delete existing activities.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ What conditions does PaceMate support?</h4>
-                <p>PaceMate includes activity templates for ME/CFS, Long COVID, POTS, Fibromyalgia, and Migraine. You can customize templates for your specific condition or create your own activities.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Can I sync data across devices?</h4>
-                <p>Currently, PaceMate stores data locally on each device. We're exploring cloud sync options for future versions. For now, you can export your data as a PDF and share it manually.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ What's the cost?</h4>
-                <p>PaceMate is available to download. We may offer optional in-app features in the future, but the core energy tracking functionality will always be available.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ How do I report a bug?</h4>
-                <p>If you encounter a bug or technical issue, please email us at support@pacemate.app with details about what happened. Include your device model, OS version, and steps to reproduce the issue.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>❓ Can I suggest features?</h4>
-                <p>Absolutely! We love hearing from our users. Email us at support@pacemate.app with your feature suggestions. Your feedback helps us build a better app for the chronic illness community.</p>
-            </div>
-        </div>
-
-        <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 1.5rem; border-radius: 0.25rem; margin-top: 2rem;">
-            <h3 style="color: #16a34a; margin-bottom: 0.5rem;">💚 Community Support</h3>
-            <p style="color: #6b7280;">PaceMate is built by and for the chronic illness community. If you have suggestions, feedback, or want to share your experience, we'd love to hear from you. Your input helps us create a better app for everyone.</p>
-        </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 PaceMate. All rights reserved. | <a href="index.html">Home</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        <div class="container">
+            <p>&copy; 2025 PaceMate. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">Privacy Policy</a> • 
+                <a href="terms.html">Terms of Service</a> • 
+                <a href="index.html">Home</a>
+            </p>
+        </div>
     </footer>
 </body>
 </html>
