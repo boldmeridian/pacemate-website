@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PaceMate - Energy tracking app for chronic illness using Spoon Theory. Track activities, avoid crashes, and understand your energy patterns.">
+    <meta name="keywords" content="energy tracking, chronic illness, ME/CFS, Long COVID, POTS, spoon theory, health app">
+    <meta name="author" content="PaceMate">
+    <meta property="og:title" content="PaceMate - Energy Tracking for Chronic Illness">
+    <meta property="og:description" content="Manage your energy with Spoon Theory. Track activities, avoid crashes, and live more predictably.">
+    <meta property="og:image" content="https://pacemate.app/og-image.png">
+    <meta property="og:url" content="https://pacemate.app">
+    <title>PaceMate - Energy Tracking for Chronic Illness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #11181C;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #11181C;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #16a34a;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #0f766e 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0f766e;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #11181C;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #16a34a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            color: #0f766e;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Conditions Section */
+        .conditions {
+            background: #f3f4f6;
+            padding: 4rem 2rem;
+        }
+
+        .conditions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .conditions h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #11181C;
+        }
+
+        .conditions-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .condition-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .condition-item p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0f766e 0%, #1e40af 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: #d1d5db;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🥄 PaceMate</div>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#conditions">For You</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="contact.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Manage Your Energy, Reclaim Your Life</h1>
+        <p>Energy tracking for chronic illness using Spoon Theory</p>
+        <div class="cta-buttons">
+            <a href="https://apps.apple.com/app/pacemate" class="btn btn-primary">Download on iOS</a>
+            <a href="https://play.google.com/store/apps/details?id=space.manus.pacemate" class="btn btn-primary">Get on Android</a>
+        </div>
+        <p style="font-size: 0.95rem; opacity: 0.85;">Offline-First • Privacy-Focused</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Powerful Features for Energy Management</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🥄</div>
+                <h3>Energy Wallet</h3>
+                <p>Track your daily spoon limit and see exactly how much energy you have left before you hit your limit.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Activity Logging</h3>
+                <p>One-tap logging of 50+ activities with customizable spoon costs. Create your own activities too.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Favorites</h3>
+                <p>Star your most-used activities for instant access on the home screen.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Crash Correlation</h3>
+                <p>Understand what triggers your crashes. See which activities correlate with post-exertional malaise episodes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Weekly Insights</h3>
+                <p>Get personalized analytics on activity patterns, spoon usage, and crash trends with actionable recommendations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🩺</div>
+                <h3>Symptom Tracking</h3>
+                <p>Log fatigue, pain, and brain fog severity to identify personal triggers and patterns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌅</div>
+                <h3>Morning Check-in</h3>
+                <p>Rate your fatigue level each morning and track post-exertional malaise recovery with customizable reminders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Recovery Guide</h3>
+                <p>Evidence-based strategies for 4 recovery phases: Immediate Response, Early Recovery, Gradual Return, and Prevention.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Export Reports</h3>
+                <p>Generate weekly and monthly PDF reports to share with healthcare providers, family, or support groups.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions Section -->
+    <section class="conditions" id="conditions">
+        <div class="conditions-container">
+            <h2>Built for Your Condition</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #6b7280;">PaceMate includes pre-configured activity templates for:</p>
+            <div class="conditions-list">
+                <div class="condition-item">
+                    <p><strong>ME/CFS</strong></p>
+                    <p style="font-size: 0.85rem;">Myalgic Encephalomyelitis / Chronic Fatigue Syndrome</p>
+                </div>
+                <div class="condition-item">
+                    <p><strong>Long COVID</strong></p>
+                    <p style="font-size: 0.85rem;">Post-viral fatigue and dysfunction</p>
+                </div>
+                <div class="condition-item">
+                    <p><strong>POTS</strong></p>
+                    <p style="font-size: 0.85rem;">Postural Orthostatic Tachycardia Syndrome</p>
+                </div>
+                <div class="condition-item">
+                    <p><strong>Fibromyalgia</strong></p>
+                    <p style="font-size: 0.85rem;">Chronic widespread pain and fatigue</p>
+                </div>
+                <div class="condition-item">
+                    <p><strong>Migraine</strong></p>
+                    <p style="font-size: 0.85rem;">Chronic headaches and related conditions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Take Control of Your Energy?</h2>
+        <p>Join thousands of people managing their chronic illness with PaceMate</p>
+        <div class="cta-buttons">
+            <a href="https://apps.apple.com/app/pacemate" class="btn btn-secondary">Download on iOS</a>
+            <a href="https://play.google.com/store/apps/details?id=space.manus.pacemate" class="btn btn-secondary">Get on Android</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Support</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PaceMate. All rights reserved. | Built with ❤️ for the chronic illness community</p>
+        </div>
+    </footer>
+</body>
+</html>
